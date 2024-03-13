@@ -1,0 +1,261 @@
+<html>
+<!-- <head>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head> -->
+   <body>
+      <title>Churn Prediction</title>
+	  <div class="container">
+		<div class="row">
+
+		  <form action="{{ url_for('predict_datapoint')}}" method="POST">
+		  	<div class="col-sm-9">
+            <div class="form-group  purple-border">
+                <label class="form-label">SeniorCitizen</label>
+                <select class="form-control" name="SeniorCitizen" placeholder="Enter you Gender" required>
+                <option class="placeholder" selected disabled value="">Select your Citizenship</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">MonthlyCharges</label>
+                <input class="form-control" type="number" name="MonthlyCharges"
+                placeholder="Enter your Monthly Charges" min='0.10' max='10000.01' step="0.01"/>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">TotalCharges</label>
+                <input class="form-control" type="number" name="TotalCharges"
+                placeholder="Enter your Total Charges" min='0.01' max='10000.01' step="0.01"/>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">gender</label>
+                <select class="form-control" name="gender" placeholder="Enter you Gender" required>
+                <option class="placeholder" selected disabled value="">Select your Gender</option>
+                <option value="Male">
+                    Male
+                </option>
+                <option value="Female">
+                    Female
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">Partner</label>
+                <select class="form-control" name="Partner" placeholder="Enter your Partner" required>
+                <option class="placeholder" selected disabled value="">Select your Partner</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+				<label class="form-label">Dependents</label>
+                <select class="form-control" name="Dependents" placeholder="Enter your Dependents" required>
+                <option class="placeholder" selected disabled value="">Select your Dependents</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+				<label class="form-label">PhoneService</label>
+                <select class="form-control" name="PhoneService" placeholder="Enter your Phone Service" required>
+                <option class="placeholder" selected disabled value="">Select your Phone Service</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">MultipleLines</label>
+				<select class="form-control" name="MultipleLines" placeholder="Enter your Multiple Lines" required>
+                <option class="placeholder" selected disabled value="">Select your Multiple Lines</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">InternetService:</label>
+                <select class="form-control" name="InternetService" placeholder="Enter your Internet Service" required>
+                <option class="placeholder" selected disabled value="">Select your Internet Service</option>
+                <option value="Fiber optic">
+                    Fiber optic
+                </option>
+                <option value="DSL">
+                    DSL
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">OnlineSecurity:</label>
+                <select class="form-control" name="OnlineSecurity" placeholder="Enter your Online Security" required>
+                <option class="placeholder" selected disabled value="">Select your Online Security</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">OnlineBackup:</label>
+                <select class="form-control" name="OnlineBackup" placeholder="Enter your Online Backup" required>
+                <option class="placeholder" selected disabled value="">Select your Online Backup</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">DeviceProtection:</label>
+                <select class="form-control" name="DeviceProtection" placeholder="Enter your Device Protection" required>
+                <option class="placeholder" selected disabled value="">Select your Device Protection</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">TechSupport:</label>
+                <select class="form-control" name="TechSupport" placeholder="Enter your Tech Support" required>
+                <option class="placeholder" selected disabled value="">Select your Tech Support</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">StreamingTV:</label>
+                <select class="form-control" name="StreamingTV" placeholder="Enter your Streaming TV" required>
+                <option class="placeholder" selected disabled value="">Select your Streaming TV</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">StreamingMovies:</label>
+                <select class="form-control" name="StreamingMovies" placeholder="Enter your Streaming Movies" required>
+                <option class="placeholder" selected disabled value="">Select your Streaming Movies</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">Contract:</label>
+                <select class="form-control" name="Contract" placeholder="Enter your Contract" required>
+                <option class="placeholder" selected disabled value="">Select your Contract</option>
+                <option value="Month-to-month">
+                    Month-to-month
+                </option>
+                <option value="Two year">
+                    Two year
+                </option>
+                <option value="One year">
+                    One year
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">PaperlessBilling:</label>
+                <select class="form-control" name="PaperlessBilling" placeholder="Enter your Paperless Billing" required>
+                <option class="placeholder" selected disabled value="">Select your Paperless Billing</option>
+                <option value="Yes">
+                    Yes
+                </option>
+                <option value="No">
+                    No
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">PaymentMethod:</label>
+                <select class="form-control" name="PaymentMethod" placeholder="Enter your Payment Method" required>
+                <option class="placeholder" selected disabled value="">Select your Payment Method</option>
+                <option value="Electronic check">
+                    Electronic check
+                </option>
+                <option value="Mailed check">
+                    Mailed check
+                </option>
+                <option value="Bank transfer (automatic)">
+                    Bank transfer (automatic)
+                </option>
+                <option value="Credit card (automatic)">
+                    Credit card (automatic)
+                </option>
+                </select>
+			</div>
+			<div class="form-group  purple-border">
+                <label class="form-label">TenureMonths</label>
+                <input class="form-control" type="number" name="TenureMonths"
+                placeholder="Enter your Tenure Months" min='0' max='360' step="1"/>
+			</div>
+            <div class="form-group  purple-border">
+                <label for="uname">City: </label>
+                <input type="text" id="uname" name="City" />
+            </div>
+            <div class="form-group  purple-border">
+                <label class="form-label">ChurnScore</label>
+                <input class="form-control" type="number" name="ChurnScore"
+                placeholder="Enter your Churn Score" min='0' max='100' step="1"/>
+            </div>
+            <div class="form-group  purple-border">
+                <label class="form-label">CLTV</label>
+                <input class="form-control" type="number" name="CLTV"
+                placeholder="Enter your CLTV" min='2500' max='6000' step="1"/>
+            </div>
+			</div>
+			<div class="col-sm-3">
+			<button type="submit" class="btn btn-primary" name="submit">SUBMIT</button>
+			</div>
+		  </form>
+		  </div>
+		  
+		
+	</div>	
+    <h2> 
+        This is Prediction is {{results}}
+    </h2>	
+   </body>
+</html>

@@ -44,8 +44,10 @@
 - Update the main.py
 - Update the dvc.yaml
 
-# dagshub ui
-- MLFLOW_TRACKING_URI=https://dagshub.com/pachpandemahesh300/customer_churn.mlflow \
-- MLFLOW_TRACKING_USERNAME=pachpandemahesh300 \
-- MLFLOW_TRACKING_PASSWORD=9f73334e82cb0e1dc7693e6eed2b0827c86e8db9 \
+# dagshub       ui     run     command on git-bash
+
+
+- export MLFLOW_TRACKING_URI=https://dagshub.com/pachpandemahesh300/customer_churn.mlflow \
+- export MLFLOW_TRACKING_USERNAME=pachpandemahesh300 \
+- export MLFLOW_TRACKING_PASSWORD=9f73334e82cb0e1dc7693e6eed2b0827c86e8db9 \
 - python script.py

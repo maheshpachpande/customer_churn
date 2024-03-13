@@ -1,5 +1,6 @@
 import os 
 import sys
+import mlflow
 import numpy as np
 import pandas as pd
 from dataclasses import dataclass
@@ -12,9 +13,10 @@ from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from box.exceptions import BoxValueError
 from customer_churn import logging
-from customer_churn.utils.common_utils import save_object, evaluate_model
+from customer_churn.utils.common_utils import save_object, evaluate_model, eval_metrics
 from imblearn.combine import SMOTEENN
 from customer_churn.entity import ModelTrainerConfig
+from urllib.parse import urlparse
 
 
 
@@ -95,6 +97,40 @@ class ModelTrainer:
             ]
 
             best_model = models[best_model_name]
+
+            mlflow.set_registry_uri("https://dagshub.com/pachpandemahesh300/customer_churn.mlflow")
+            tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
+            
+            # mlflow
+
+            with mlflow.start_run():
+
+                predicted_qualities = best_model.predict(X_test)
+
+                (accuracy, class_report, confusionmatrix) = self.eval_metrics(y_test, predicted_qualities)
+
+                mlflow.log_params(best_model_score)
+
+                mlflow.log_metric("accuracy", accuracy)
+                mlflow.log_metric("class_report", class_report)
+                mlflow.log_metric("confusionmatrix", confusionmatrix)
+
+
+                # Model registry does not work with file store
+                if tracking_url_type_store != "file":
+
+                    # Register the model
+                    # There are other ways to use the Model Registry, which depends on the use case,
+                    # please refer to the doc for more information:
+                    # https://mlflow.org/docs/latest/model-registry.html#api-workflow
+                    mlflow.sklearn.log_model(best_model, "model", registered_model_name=best_model)
+                else:
+                    mlflow.sklearn.log_model(best_model, "model")
+
+
+
+
+
 
             if best_model_score < 0.6:
                 raise ValueError("No Best Model Found.....")
