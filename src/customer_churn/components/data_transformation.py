@@ -115,6 +115,12 @@ class DataTransformation:
                 obj = preprocessor_obj
             )
 
+            train_ar = pd.DataFrame(train_arr)
+            train_ar.to_csv("artifacts/data_transformation/train.csv", index=False)
+
+            test_ar = pd.DataFrame(test_arr)
+            test_ar.to_csv("artifacts/data_transformation/test.csv", index=False)
+
             return (
                 train_arr,
                 test_arr,

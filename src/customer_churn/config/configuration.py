@@ -1,7 +1,8 @@
 from customer_churn.constants import *
 from customer_churn.utils.common_utils import read_yaml, create_directories
 from customer_churn.entity import (DataIngestionConfig,
-                                   DataTransformationConfig)
+                                   DataTransformationConfig,
+                                   ModelTrainerConfig)
 
 
 
@@ -43,3 +44,17 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+    
+
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            model_path=config.model_path
+        )
+
+        return model_trainer_config

@@ -1,5 +1,7 @@
 from customer_churn.config.configuration import ConfigurationManager
 from customer_churn.components.data_ingestion import DataIngestion
+from customer_churn.components.data_transformation import DataTransformation
+from customer_churn.components.model_trainer import ModelTrainer
 from customer_churn import logger
 from box.exceptions import BoxValueError
 

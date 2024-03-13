@@ -15,7 +15,7 @@ class DatatransformationTrainingPipeline:
         config = ConfigurationManager()   
         data_transformation_config = config.get_data_transformation_config()
         data_transformation = DataTransformation(config=data_transformation_config)
-        data_transformation.initiate_data_transformation("artifacts/data_ingestion/train.csv","artifacts/data_ingestion/test.csv")
+        train_arr, test_arr, _ = data_transformation.initiate_data_transformation("artifacts/data_ingestion/train.csv","artifacts/data_ingestion/test.csv")
 
 
 
