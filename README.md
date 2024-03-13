@@ -35,7 +35,7 @@
 
 # WorkFlows in each research ipynb file
 - Update config.yaml
-- Update secrets.yaml [Optional] (use for userid or password)
+- Update secrets.yaml [Optional] (use for userid or password) or .env file
 - Update params.yaml  (define model related parameter)
 - Update the entity    
 - Update the configuration manager in src config

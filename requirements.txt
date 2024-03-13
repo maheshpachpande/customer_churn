@@ -17,5 +17,12 @@ mlflow
 python-dotenv
 mysql-connector-python
 pymysql
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-PyYAML
+python-box==6.0.2
+
 
 -e .
